@@ -27,6 +27,18 @@ docs_scrape_tool = ScrapeWebsiteTool(
     ]
 )
 
+# Ferramenta para RAG em arquivos PDF. Específica para fazer buscas e extrair partes relevantes em arquivos PDF. 
+"""
+pdf_search = PDFSearchTool(pdf=[
+    "normas/335492.pdf",
+    "normas/Anatel - Resolução nº 426, de 9 de dezembro de 2005.pdf",
+    "normas/Anatel - Resolução nº 477, de 7 de agosto de 2007.pdf",
+    "normas/Anatel - Resolução nº 488, de 3 de dezembro de 2007.pdf",
+    "normas/Anatel - Resolução nº 581, de 26 de março de 2012.pdf",
+    "normas/Anatel - Resolução nº 632, de 7 de março de 2014.pdf",
+    "normas/oficio_12273325.pdf"])
+"""
+#Definição dos 3 agentes:
 identificador = Agent(
     role="Identificador de Problemas",
     goal="Receber a dúvida do cliente e identificar de qual área é o seguinte problema: {problema}",
@@ -80,7 +92,7 @@ supervisor = Agent(
     backstory="Você é um solucionador que recebe uma solução para o {problema}."
               "Com essa solução, você deve verificar se ela é coerente com as leis da Anatel e com os datasheets utilizados para consulta."
               "Além disso, é necessário estudar a gramática portuguesa brasileira para verificar se há algum erro."
-              "Por fim, retorne um arquivo em markdown",
+              "Por fim, retorne um arquivo em markdown com a correção.",
     verbose=True,
     allow_delegation=False,
     llm=gpt4o_mini_llm
