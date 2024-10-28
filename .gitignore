@@ -2,3 +2,4 @@ venv/
 API_LLM_OpenAI.txt
 API_Serper.txt
 __pycache__/
+db/

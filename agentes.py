@@ -28,6 +28,13 @@ docs_scrape_tool = ScrapeWebsiteTool(
 )
 
 # Ferramenta para RAG em arquivos PDF. Específica para fazer buscas e extrair partes relevantes em arquivos PDF. 
+pdf_search = PDFSearchTool(pdf="normas/335492.pdf")
+pdf_search1 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 426, de 9 de dezembro de 2005.pdf")
+pdf_search2 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 477, de 7 de agosto de 2007.pdf")
+pdf_search3 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 488, de 3 de dezembro de 2007.pdf")
+pdf_search4 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 581, de 26 de março de 2012.pdf")
+pdf_search5 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 632, de 7 de março de 2014.pdf")
+pdf_search6 = PDFSearchTool(pdf="normas/oficio_12273325.pdf")
 """
 pdf_search = PDFSearchTool(pdf=[
     "normas/335492.pdf",
@@ -52,7 +59,7 @@ identificador = Agent(
               "agente seguinte escreva possiveis soluções para o problema."
               "O próximo agente pode ser o Solucionador de problemas da área Jurídica ou o Solucionador de problemas da área Técnica ",
     verbose=True,
-    tools=[search_tool, scrape_tool, docs_scrape_tool],
+    tools=[search_tool, scrape_tool, docs_scrape_tool, pdf_search, pdf_search1, pdf_search2, pdf_search3, pdf_search4, pdf_search5, pdf_search6],
     allow_delegation=False,
     llm=gpt4o_mini_llm
 )
@@ -69,6 +76,7 @@ juridico = Agent(
               "Envie esse artigo para o Supervisor de artigos"
               "Caso o problema não seja da sua área não escreva nada no documento",
     verbose=True,
+    tools=[pdf_search, pdf_search1, pdf_search2, pdf_search3, pdf_search4, pdf_search5, pdf_search6],
     allow_delegation=False,
     llm=gpt4o_mini_llm
 )
