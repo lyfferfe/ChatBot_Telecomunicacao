@@ -50,8 +50,7 @@ identificador = Agent(
               "As únicas duas áreas de problemas principais são Jurídico e Técnico "
               "Seu trabalho é a base para que o "
               "agente seguinte escreva possiveis soluções para o problema."
-              "Retorne em string a área do problema: juridico ou tecnico. "
-              "Se o problema não tiver relação com a área de telecomunicações, retorne 0",
+              "O próximo agente pode ser o Solucionador de problemas da área Jurídica ou o Solucionador de problemas da área Técnica ",
     verbose=True,
     tools=[search_tool, scrape_tool, docs_scrape_tool],
     allow_delegation=False,
@@ -66,11 +65,14 @@ juridico = Agent(
               "Você também fornece insights objetivos e imparciais "
               "e os apoia com as informações "
               "baseadas nas leis da Anatel e regulamentações da Anatel. "
-              "Após análise concluída você escreve um artigo aconselhando o cliente para a solução do seu problema.",
+              "Após análise concluída você escreve um artigo aconselhando o cliente para a solução do seu problema."
+              "Envie esse artigo para o Supervisor de artigos"
+              "Caso o problema não seja da sua área não escreva nada no documento",
     verbose=True,
     allow_delegation=False,
     llm=gpt4o_mini_llm
 )
+
 
 tecnico = Agent(
     role="Solucionador de problemas da área Técnica",
@@ -80,19 +82,22 @@ tecnico = Agent(
               "Você também fornece insights objetivos e imparciais "
               "e os apoia com as informações "
               "fornecidas pelos datasheets. "
-              "Após análise concluída você escreve um artigo aconselhando o cliente para a solução do seu problema.",
+              "Após análise concluída você escreve um artigo aconselhando o cliente para a solução do seu problema."
+              "Envie esse artigo para o Supervisor de artigos"
+              "Caso o problema não seja da sua área não escreva nada no documento",
     verbose=True,
     allow_delegation=False,
     llm=gpt4o_mini_llm
 )
 
 supervisor = Agent(
-    role="Supervisar os artigos produzidos pelos agenstes jurídicos e técnicos, corrigindo erros jurídicos, técnicos e gramaticais da lígua portuguesa.",
+    role="Supervisor de artigos",
     goal="Analisar e corrigir possíveis erros cometidos pelo agente jurídico e pelo técnico para solucionar o seguinte problema: {problema}",
-    backstory="Você é um solucionador que recebe uma solução para o {problema}."
-              "Com essa solução, você deve verificar se ela é coerente com as leis da Anatel e com os datasheets utilizados para consulta."
-              "Além disso, é necessário estudar a gramática portuguesa brasileira para verificar se há algum erro."
-              "Por fim, retorne um arquivo em markdown com a correção.",
+    backstory="Você é um supervisor de artigos que recebe um artigo com soluções para o problema: {problema}."
+              "Seu objetivo é supervisar os artigos produzidos pelos agentes jurídicos e técnicos, corrigindo erros jurídicos, técnicos e gramaticais da lígua portuguesa."
+              "Você deve verificar se as soluções são coerentes com as leis da Anatel e com os datasheets utilizados para consulta."
+              "Caso o problema não seja da área da Telecomunicações, apague o texto do solucionador de problemas e escreva que o problema está fora do escopo"
+              "Por fim, retorne o documento corrigido.",
     verbose=True,
     allow_delegation=False,
     llm=gpt4o_mini_llm
