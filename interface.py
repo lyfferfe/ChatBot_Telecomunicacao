@@ -5,25 +5,25 @@ from tkinter import scrolledtext
 def send_message():
     user_message = user_input.get()
     if user_message.strip() != "":
-        # Habilita temporariamente a área de chat para inserir texto
+        # Habilita a área de chat para inserir texto
         chat_area.config(state="normal")
         
-        # Exibe a mensagem do usuário na área de chat
-        chat_area.insert(tk.END, f"Você: {user_message}\n")
+        # Exibe a mensagem do usuário à direita
+        chat_area.insert(tk.END, f"Você: {user_message}\n", "user")
         
         # Limpa o campo de entrada de texto
         user_input.delete(0, tk.END)
         
-        # Aqui você pode adicionar a lógica para gerar a resposta da IA
-        bot_response = "Resposta da IA aqui..."  # Exemplo de resposta
+        # Resposta da IA (substitua por uma resposta real se disponível)
+        bot_response = "Resposta da IA aqui..."
         
-        # Exibe a resposta da IA na área de chat
-        chat_area.insert(tk.END, f"IA: {bot_response}\n")
+        # Exibe a resposta da IA à esquerda
+        chat_area.insert(tk.END, f"IA: {bot_response}\n", "bot")
         
-        # Rola o chat para o final
+        # Rola o chat para o final, garantindo que a última mensagem apareça
         chat_area.yview(tk.END)
         
-        # Desabilita a área de chat novamente
+        # Desabilita a área de chat para impedir edições
         chat_area.config(state="disabled")
 
 # Criação da janela principal
@@ -39,6 +39,10 @@ header.pack(pady=10, fill=tk.X)
 # Área de chat com rolagem
 chat_area = scrolledtext.ScrolledText(window, wrap=tk.WORD, font=("Arial", 12), bg="#ffffff", state="disabled")
 chat_area.pack(padx=10, pady=10, fill=tk.BOTH, expand=True)
+
+# Definindo estilos de tag para alinhar as mensagens à direita e à esquerda
+chat_area.tag_config("user", justify="right", foreground="#333333", background="#f0f2f5", font=("Arial", 12, "italic"))
+chat_area.tag_config("bot", justify="left", foreground="#4a4a4a", background="#e5e5e5", font=("Arial", 12))
 
 # Caixa de entrada de texto
 user_input = tk.Entry(window, font=("Arial", 12))
