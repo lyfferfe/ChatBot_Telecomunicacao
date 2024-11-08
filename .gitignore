@@ -1,5 +1,6 @@
 venv/
 API_LLM_OpenAI.txt
 API_Serper.txt
+API_alunos_OpenAI.txt
 __pycache__/
 db/

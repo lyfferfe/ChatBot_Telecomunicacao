@@ -1,5 +1,15 @@
 import tkinter as tk
-from tkinter import scrolledtext
+from IPython.display import Markdownfrom tkinter import scrolledtext
+
+from crewai import Task, Crew
+from agentes import identificador, juridico, tecnico, supervisor
+from tarefas import identificacao, solucao_tecnica, solucao_juridica, supervisar
+
+crew = Crew(
+    agents=[identificador, tecnico, juridico, supervisor],
+    tasks=[identificacao, solucao_tecnica, solucao_juridica, supervisar],
+    verbose=2
+)
 
 # Função para enviar mensagem
 def send_message():
@@ -15,10 +25,10 @@ def send_message():
         user_input.delete(0, tk.END)
         
         # Resposta da IA (substitua por uma resposta real se disponível)
-        bot_response = "Resposta da IA aqui..."
+        bot_response = crew.kickoff(inputs={"problema": user_message})
         
         # Exibe a resposta da IA à esquerda
-        chat_area.insert(tk.END, f"IA: {bot_response}\n", "bot")
+        chat_area.insert(tk.END, f"IA: {(bot_response)}\n", "bot")
         
         # Rola o chat para o final, garantindo que a última mensagem apareça
         chat_area.yview(tk.END)

@@ -35,16 +35,7 @@ pdf_search3 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 488, de 3 de de
 pdf_search4 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 581, de 26 de março de 2012.pdf")
 pdf_search5 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 632, de 7 de março de 2014.pdf")
 pdf_search6 = PDFSearchTool(pdf="normas/oficio_12273325.pdf")
-"""
-pdf_search = PDFSearchTool(pdf=[
-    "normas/335492.pdf",
-    "normas/Anatel - Resolução nº 426, de 9 de dezembro de 2005.pdf",
-    "normas/Anatel - Resolução nº 477, de 7 de agosto de 2007.pdf",
-    "normas/Anatel - Resolução nº 488, de 3 de dezembro de 2007.pdf",
-    "normas/Anatel - Resolução nº 581, de 26 de março de 2012.pdf",
-    "normas/Anatel - Resolução nº 632, de 7 de março de 2014.pdf",
-    "normas/oficio_12273325.pdf"])
-"""
+
 #Definição dos 3 agentes:
 identificador = Agent(
     role="Identificador de Problemas",
