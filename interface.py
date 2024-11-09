@@ -1,6 +1,6 @@
 import tkinter as tk
-from IPython.display import Markdownfrom tkinter import scrolledtext
-
+from IPython.display import Markdown
+from tkinter import scrolledtext
 from crewai import Task, Crew
 from agentes import identificador, juridico, tecnico, supervisor
 from tarefas import identificacao, solucao_tecnica, solucao_juridica, supervisar
