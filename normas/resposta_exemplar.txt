@@ -1,0 +1,63 @@
+Perguntas e respostas modelos:
+
+1. Por que a Anatel homologa os produtos para telecomunicações?
+Os produtos para telecomunicações precisam ser homologados pela Anatel para se assegurar um padrão mínimo de 
+qualidade e conformidade com os regulamentos expedidos ou adotados pela Agência. Desta forma, a homologação tem como 
+objetivo: Garantir que os equipamentos operem em frequências compatíveis com a regulamentação brasileira, e que não causem 
+interferências em outros serviços regularmente estabelecidos, como, por exemplo, o Controle de Tráfego Aéreo e as redes de 
+comunicação móvel (redes celulares); Assegurar características construtivas que garantam a segurança dos usuários, minimizando o 
+risco de choques elétricos, exposição a campos eletromagnéticos acima dos limites recomendados pela Organização Mundial de 
+Saúde (OMS), proteção contra vazamento de materiais tóxicos, explosões, entre outros.
+
+2. O que é inspeção da Anatel na importação?
+A inspeção nada mais é que a aprovação/reprovação da Anatel sobre o ingresso de produtos para telecomunicações em território nacional.
+
+3. Uma vez selecionada e encaminhada a notificação da retenção do produto para a Anatel, onde é feita a inspeção da minha encomenda?
+Todas as inspeções da Anatel são realizadas dentro das instalações dos Correios. Em nenhuma hipótese as encomendas são encaminhadas 
+para sede da Anatel ou suas Gerências Regionais.
+
+4. Como acompanho a situação da minha encomenda?
+Como qualquer outra encomenda dos Correios, o acompanhamento deve ser na página da instituição na internet, por meio do número de rastreio.
+
+5. Para quais produtos a Anatel exige a homologação?
+Em regra, todos os produtos para telecomunicações devem ser homologados pela Anatel. De forma exemplificativa, 
+os seguintes produtos estão sujeitos à homologação: produtos emissores de radiofrequência, como, por exemplo, dispositivos 
+Wi-Fi e/ou Bluetooth; produtos utilizados em redes de telecomunicações, como roteadores, switches, cabos ópticos, terminais 
+ópticos, cabos LAN; produtos receptores de TV por Assinatura; celulares, baterias e carregadores para celulares; entre outros. 
+Lista completa dos produtos pode ser obtida em https://www.gov.br/anatel/pt-br/regulado/certificacao/requisitos-tecnicos-para-certificacoes.
+
+6. Onde encontro o procedimento para homologação de produtos para uso próprio?
+Todas as informações sobre o procedimento de homologação para uso próprio podem ser obtidas no endereço
+https://www.gov.br/anatel/pt-br/regulado/certificacao-de-produtos/formularios-certificacao. 
+Ressalta-se que, inicialmente, não é necessário possuir o produto em mãos. É imprescindível a leitura integral das instruções 
+contidas nos documentos correspondentes disponíveis no endereço informado.
+
+7. Qual é o procedimento para homologação e posterior comercialização de produtos?
+Para que o produto possa ser comercializado no Brasil, o interessado deverá certifica-lo junto a um dos Organismos de 
+Certificação Designados (OCDs) pela Anatel (lista com os OCDs pode ser obtida em 
+https://www.gov.br/anatel/pt-br/regulado/certificacao/ocds). Vale lembrar que, durante o processo, será exigida a autorização 
+do fabricante, em nome do interessado, para a certificação do produto. Após a emissão do Certificado de Homologação pela Anatel, 
+o seu detentor, e somente ele, será o responsável pela comercialização do produto no país. Mais informações podem ser obtidas 
+no endereço https://www.gov.br/anatel/pt-br/regulado/certificacao-de-produtos/procedimentos-operacionais.
+
+8. Após a regularização na Anatel, os produtos ainda podem ser tributados pela Receita Federal do Brasil?
+Após a liberação do produto pela Anatel, a remessa seguirá seu trâmite normal e poderá, antes da liberação para entrega 
+ao destinatário, ser tributada pela Receita Federal do Brasil.
+
+9. O que ocorre se o meu produto não for regularizado no prazo?
+Caso o produto não seja regularizado no prazo oportunizado, sua remessa será devolvida à origem.
+
+10. Como faço para regularizar um Drone?
+Para uso próprio, o interessado deverá acessar a página https://www.gov.br/anatel/pt-br/regulado/certificacao/ e, 
+em “Formulários e Manuais”, clicar no documento “Instruções para Homologação de DRONES por Declaração de Conformidade”.
+
+11. Se eu importei mais de um Drone para uso próprio, uma única homologação é suficiente para a liberação dos produtos?
+Não. Neste caso, a homologação da Anatel é valida para cada unidade do produto. 
+Sendo assim, para os casos de importação de mais de uma unidade para uso próprio, o interessado deverá requerer uma
+homologação para cada Drone.
+
+12. Em caso de dúvidas adicionais, a Anatel disponibiliza os canais oficiais de atendimento: Internet - Suporte do Atendimento aos Usuários e Central de Atendimento Telefônico gratuito, 
+no número 1331 ou 1332 (deficientes auditivos).
+
+
+

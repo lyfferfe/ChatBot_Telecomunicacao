@@ -1,5 +1,5 @@
 import os
-from crewai_tools import tool, SerperDevTool, ScrapeWebsiteTool, WebsiteSearchTool, FileReadTool, PDFSearchTool
+from crewai_tools import tool, SerperDevTool, ScrapeWebsiteTool, PDFSearchTool, TXTSearchTool
 from crewai import Agent, Task, Crew, Process
 from langchain_openai import ChatOpenAI
 from ia import get_openai_api_key, get_serper_api_key
@@ -17,18 +17,22 @@ search_tool = SerperDevTool()
 # Ferramenta para raspagem de sites
 scrape_tool = ScrapeWebsiteTool()
 
+# Ferramenta para raspagem de arquivo txt, para as respostas exemplo.
+texto_search = TXTSearchTool("normas/resposta_exemplar.txt")
+
 # Especificação de apenas um site para raspagem
 docs_scrape_tool = ScrapeWebsiteTool(
     website_url=[
         "https://www.gov.br/anatel/pt-br/consumidor/conheca-seus-direitos/banda-larga",
         "https://www.gov.br/anatel/pt-br/consumidor/conheca-seus-direitos/telefonia-movel",
         "https://www.gov.br/anatel/pt-br/consumidor/conheca-seus-direitos/telefonia-fixa",
-        "https://www.gov.br/anatel/pt-br/consumidor/conheca-seus-direitos/tv-por-assinatura"
+        "https://www.gov.br/anatel/pt-br/consumidor/conheca-seus-direitos/tv-por-assinatura",
+        "https://www.gov.br/anatel/pt-br/consumidor/perguntas-frequentes"
     ]
 )
 
 # Ferramenta para RAG em arquivos PDF. Específica para fazer buscas e extrair partes relevantes em arquivos PDF. 
-pdf_search = PDFSearchTool(pdf="normas/335492.pdf")
+pdf_search = PDFSearchTool(pdf="normas/Anatel - Manual Explicativo.pdf")
 pdf_search1 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 426, de 9 de dezembro de 2005.pdf")
 pdf_search2 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 477, de 7 de agosto de 2007.pdf")
 pdf_search3 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 488, de 3 de dezembro de 2007.pdf")
@@ -50,7 +54,7 @@ identificador = Agent(
               "agente seguinte escreva possiveis soluções para o problema."
               "O próximo agente pode ser o Solucionador de problemas da área Jurídica ou o Solucionador de problemas da área Técnica ",
     verbose=True,
-    tools=[search_tool, scrape_tool, docs_scrape_tool, pdf_search, pdf_search1, pdf_search2, pdf_search3, pdf_search4, pdf_search5, pdf_search6],
+    tools=[search_tool, scrape_tool, docs_scrape_tool, pdf_search, pdf_search1, pdf_search2, pdf_search3, pdf_search4, pdf_search5, pdf_search6, texto_search],
     allow_delegation=False,
     llm=gpt4o_mini_llm
 )
@@ -67,7 +71,7 @@ juridico = Agent(
               "Envie esse artigo para o Supervisor de artigos"
               "Caso o problema não seja da sua área não escreva nada no documento",
     verbose=True,
-    tools=[pdf_search, pdf_search1, pdf_search2, pdf_search3, pdf_search4, pdf_search5, pdf_search6],
+    tools=[pdf_search, pdf_search1, pdf_search2, pdf_search3, pdf_search4, pdf_search5, pdf_search6, texto_search],
     allow_delegation=False,
     llm=gpt4o_mini_llm
 )
@@ -85,6 +89,7 @@ tecnico = Agent(
               "Envie esse artigo para o Supervisor de artigos"
               "Caso o problema não seja da sua área não escreva nada no documento",
     verbose=True,
+    tools=[pdf_search, pdf_search1, pdf_search2, pdf_search3, pdf_search4, pdf_search5, pdf_search6, texto_search],
     allow_delegation=False,
     llm=gpt4o_mini_llm
 )
@@ -96,7 +101,7 @@ supervisor = Agent(
               "Seu objetivo é supervisar os artigos produzidos pelos agentes jurídicos e técnicos, corrigindo erros jurídicos, técnicos e gramaticais da lígua portuguesa."
               "Você deve verificar se as soluções são coerentes com as leis da Anatel e com os datasheets utilizados para consulta."
               "Caso o problema não seja da área da Telecomunicações, apague o texto do solucionador de problemas e escreva que o problema está fora do escopo"
-              "Por fim, retorne o documento corrigido.",
+              "Por fim, retorne o documento corrigido, resumido e com as referências da pesquisa ao final.",
     verbose=True,
     allow_delegation=False,
     llm=gpt4o_mini_llm

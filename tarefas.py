@@ -39,9 +39,10 @@ supervisar = Task(
         "1. Corrigir possíveis erros gramaticais do documento sobre o problema: {problema}\n"
         "2. Corrigir também erros jurídicos e técnicos \n"
         "3. Caso o problema não seja da área de Telecomunicações apague o texto anterior do documento e escreva que o problema está fora do escopo no documento"
+        "4. Preze por fazer resumos em um único parágrafo de no máximo 6 linhas."
         ),
-        expected_output="Um documento com soluções bem escrito, em português do Brasil, "
-            "com cada seção contendo 3 ou 4 parágrafos. Ao final, as referências utilizadas no documento.",
+        expected_output="Uma resposta com soluções bem escrito, em português do Brasil, "
+            "com no máximo 10 linhas. Ao final, as referências utilizadas no documento.",
         agent=supervisor,
 )
 
