@@ -1,6 +1,6 @@
 import tkinter as tk
-from IPython.display import Markdown
 from tkinter import scrolledtext
+import threading
 from crewai import Task, Crew
 from agentes import identificador, juridico, tecnico, supervisor
 from tarefas import identificacao, solucao_tecnica, solucao_juridica, supervisar
@@ -14,27 +14,36 @@ crew = Crew(
 # Função para enviar mensagem
 def send_message():
     user_message = user_input.get()
+
     if user_message.strip() != "":
         # Habilita a área de chat para inserir texto
         chat_area.config(state="normal")
-        
+
         # Exibe a mensagem do usuário à direita
         chat_area.insert(tk.END, f"Você: {user_message}\n", "user")
-        
+
         # Limpa o campo de entrada de texto
         user_input.delete(0, tk.END)
-        
-        # Resposta da IA (substitua por uma resposta real se disponível)
-        bot_response = crew.kickoff(inputs={"problema": user_message})
-        
-        # Exibe a resposta da IA à esquerda
-        chat_area.insert(tk.END, f"IA: {(bot_response)}\n", "bot")
-        
-        # Rola o chat para o final, garantindo que a última mensagem apareça
-        chat_area.yview(tk.END)
-        
-        # Desabilita a área de chat para impedir edições
-        chat_area.config(state="disabled")
+
+        # Feedback visual para o usuario saber que a IA está gerando a resposta
+        chat_area.insert(tk.END, "IA: Gerando resposta...\n", "bot")
+
+        # Inicia a tarefa pra pegar a resposta da IA em outra thread, porque essa função trava a thread, assim impedindo o texto do feedback de ser exibido
+        thread_bot = threading.Thread(target=get_ia_response, args=(user_message, ))
+        thread_bot.start()
+
+def get_ia_response(user_message):
+    # Resposta da IA (substitua por uma resposta real se disponível)
+    bot_response = crew.kickoff(inputs={"problema": user_message})
+
+    # Exibe a resposta da IA à esquerda
+    chat_area.insert(tk.END, f"IA: {(bot_response)}\n", "bot")
+
+    # Rola o chat para o final, garantindo que a última mensagem apareça
+    chat_area.yview(tk.END)
+
+    # Desabilita a área de chat para impedir edições
+    chat_area.config(state="disabled")
 
 # Criação da janela principal
 window = tk.Tk()
