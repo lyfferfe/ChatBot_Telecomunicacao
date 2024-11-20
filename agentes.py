@@ -106,5 +106,6 @@ supervisor = Agent(
               "Por fim, retorne o documento corrigido, resumido e com as referências da pesquisa ao final.",
     verbose=True,
     allow_delegation=False,
+    tools=[search_tool, scrape_tool, docs_scrape_tool, docs_search_tool, pdf_search, pdf_search1, pdf_search2, pdf_search3, pdf_search4, pdf_search5, pdf_search6, texto_search],
     llm=gpt4o_mini_llm
 )
