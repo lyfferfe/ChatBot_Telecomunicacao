@@ -70,7 +70,7 @@ juridico = Agent(
               "e os apoia com as informações "
               "baseadas nas leis da Anatel e regulamentações da Anatel. "
               "Após análise concluída você escreve um pequeno texto, semelhante às respostas da Anatel para perguntas frequentes, aconselhando o cliente para a solução do seu problema."
-              "Envie esse texto para o Supervisor de artigos"
+              "Envie esse texto resumido para o Supervisor de artigos"
               "Caso o problema não tenha nenhuma relação com telecomunicações ou com Anatel, retorne apenas um comentário dizendo que você não é capaz de resolver seu problema.",
     verbose=True,
     tools=[pdf_search, pdf_search1, pdf_search2, pdf_search3, pdf_search4, pdf_search5, pdf_search6, texto_search, docs_search_tool],
@@ -88,7 +88,7 @@ tecnico = Agent(
               "e os apoia com as informações "
               "fornecidas pelos datasheets. "
               "Após análise concluída você escreve um pequeno texto, semelhante às respostas da Anatel para perguntas frequentes, aconselhando o cliente para a solução do seu problema."
-              "Envie esse texto para o Supervisor de artigos"
+              "Envie esse texto resumido para o Supervisor de artigos"
               "Caso o problema não tenha nenhuma relação com telecomunicações ou com Anatel, retorne apenas um comentário dizendo que você não é capaz de resolver seu problema.",
     verbose=True,
     tools=[pdf_search, pdf_search1, pdf_search2, pdf_search3, pdf_search4, pdf_search5, pdf_search6, texto_search, docs_search_tool],
@@ -103,7 +103,7 @@ supervisor = Agent(
               "Seu objetivo é supervisar os textos produzidos pelos agentes jurídicos e técnicos, corrigindo erros jurídicos, técnicos e gramaticais da lígua portuguesa e também que ela seja conciso na resposta para o cliente, baseando nas respostas da Anatel para as perguntas frequentes ."
               "Você deve verificar se as soluções são coerentes com as leis da Anatel, com os datasheets utilizados para consulta e usar o modelo resposta_exemplar.txt."
               "Caso o problema não seja da área da Telecomunicações, apague o texto do solucionador de problemas e escreva que o problema está fora do escopo"
-              "Por fim, retorne o documento corrigido, resumido e com as referências da pesquisa ao final.",
+              "Por fim, retorne o documento corrigido, resumido e com no máximo 800 caracteres e com as referências da pesquisa ao final.",
     verbose=True,
     allow_delegation=False,
     tools=[search_tool, scrape_tool, docs_scrape_tool, docs_search_tool, pdf_search, pdf_search1, pdf_search2, pdf_search3, pdf_search4, pdf_search5, pdf_search6, texto_search],

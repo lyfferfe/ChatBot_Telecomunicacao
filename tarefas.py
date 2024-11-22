@@ -38,7 +38,7 @@ supervisar = Task(
         "3. Corrigir possíveis erros gramaticais e de concordância. \n"
         "4. Após a revisão, encaminhar o texto para o cliente."
         ),
-        expected_output="Uma resposta com soluções claras e concisas para o problema do cliente, baseadas nas normas da Anatel e nos datasheets dos equipamentos.",
+        expected_output="Uma resposta com soluções claras e concisas para o problema do cliente, baseadas nas normas da Anatel e nos datasheets dos equipamentos com no máximo 800.",
         agent=supervisor,
 )
 
