@@ -39,7 +39,6 @@ pdf_search2 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 477, de 7 de ag
 pdf_search3 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 488, de 3 de dezembro de 2007.pdf")
 pdf_search4 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 581, de 26 de março de 2012.pdf")
 pdf_search5 = PDFSearchTool(pdf="normas/Anatel - Resolução nº 632, de 7 de março de 2014.pdf")
-pdf_search6 = PDFSearchTool(pdf="normas/oficio_12273325.pdf")
 
 #Definição dos 4 agentes:
 identificador = Agent(
@@ -56,7 +55,7 @@ identificador = Agent(
               "agente seguinte escreva possíveis soluções para o problema."
               "O próximo agente pode ser o Solucionador de problemas da área Jurídica ou o Solucionador de problemas da área Técnica ",
     verbose=True,
-    tools=[search_tool, scrape_tool, docs_scrape_tool, docs_search_tool, pdf_search, pdf_search1, pdf_search2, pdf_search3, pdf_search4, pdf_search5, pdf_search6, texto_search],
+    tools=[search_tool, scrape_tool, docs_scrape_tool, docs_search_tool, texto_search],
     allow_delegation=False,
     llm=gpt4o_mini_llm
 )
@@ -73,7 +72,7 @@ juridico = Agent(
               "Envie esse texto resumido para o Supervisor de artigos"
               "Caso o problema não tenha nenhuma relação com telecomunicações ou com Anatel, retorne apenas um comentário dizendo que você não é capaz de resolver seu problema.",
     verbose=True,
-    tools=[pdf_search, pdf_search1, pdf_search2, pdf_search3, pdf_search4, pdf_search5, pdf_search6, texto_search, docs_search_tool],
+    tools=[pdf_search, pdf_search1, pdf_search2, pdf_search3, pdf_search4, pdf_search5, texto_search, docs_search_tool],
     allow_delegation=False,
     llm=gpt4o_mini_llm
 )
@@ -91,7 +90,7 @@ tecnico = Agent(
               "Envie esse texto resumido para o Supervisor de artigos"
               "Caso o problema não tenha nenhuma relação com telecomunicações ou com Anatel, retorne apenas um comentário dizendo que você não é capaz de resolver seu problema.",
     verbose=True,
-    tools=[pdf_search, pdf_search1, pdf_search2, pdf_search3, pdf_search4, pdf_search5, pdf_search6, texto_search, docs_search_tool],
+    tools=[pdf_search, pdf_search1, pdf_search2, pdf_search3, pdf_search4, pdf_search5, texto_search, docs_search_tool],
     allow_delegation=False,
     llm=gpt4o_mini_llm
 )
@@ -106,6 +105,6 @@ supervisor = Agent(
               "Por fim, retorne o documento corrigido, resumido e com no máximo 800 caracteres e com as referências da pesquisa ao final.",
     verbose=True,
     allow_delegation=False,
-    tools=[search_tool, scrape_tool, docs_scrape_tool, docs_search_tool, pdf_search, pdf_search1, pdf_search2, pdf_search3, pdf_search4, pdf_search5, pdf_search6, texto_search],
+    tools=[search_tool, scrape_tool, docs_scrape_tool, docs_search_tool, pdf_search, pdf_search1, pdf_search2, pdf_search3, pdf_search4, pdf_search5, texto_search],
     llm=gpt4o_mini_llm
 )
