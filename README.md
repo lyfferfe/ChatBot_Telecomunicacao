@@ -1,4 +1,4 @@
-<img src="assets/logo.png" alt="logo" id="imagem" width="215" height="200" style="border-radius: 15px;">
+<img src="assets/chatbot.png" alt="logo" id="imagem" width="215" height="200" style="border-radius: 15px;">
 
 # ChatBot Telecomunicacao
 Trabalho final do curso de telecomunicações, um chatbot para auxiliar a resolver problemas de clientes de telecomunicações. <br>
